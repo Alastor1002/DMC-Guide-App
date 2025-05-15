@@ -1,16 +1,41 @@
-# project_application
+# Devil May Cry App (Flutter)
 
-A new Flutter project.
+Una aplicación informativa sobre la saga **Devil May Cry**, desarrollada con **Flutter**. Presenta información sobre logros, misiones y títulos de la franquicia, con una interfaz visualmente atractiva y fácil de navegar.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Descripción del proyecto
 
-A few resources to get you started if this is your first Flutter project:
+Este proyecto busca ofrecer una experiencia interactiva para los fanáticos de Devil May Cry. La app muestra logros y misiones del juego *Devil May Cry 1* y establece la base para agregar otros títulos de la saga.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✨ Características
+
+- Pantalla de presentación (Splash screen) con logo e imagen.
+- Menú principal con selección de juegos.
+- Navegación lateral (Drawer) para acceder a secciones como Perfil.
+- Diseño responsivo con cuadrículas e imágenes para cada juego.
+- Visualización de logros con opción de marcarlos como completados.
+- Visualización de misiones por tiempo y orbes recolectados.
+
+---
+
+## 🚀 Funcionalidades más relevantes
+
+- SplashScreen animado que redirige automáticamente al Home.
+- GridView de juegos, mostrando cuáles están disponibles o en desarrollo.
+- Listado de logros con checkbox visual (sin persistencia).
+- Listado de misiones con detalle de objetivos.
+- Interfaz moderna con navegación entre pantallas mediante rutas nombradas.
+
+---
+
+## 🌐 Recursos públicos utilizados / generados
+
+Actualmente no se han generado URLs públicas para APKs o informes.
+
+> Si decides subir tu APK, informe de proyecto o presentación a Google Drive, GitHub Pages, o Firebase Hosting, puedes colocarlo aquí. Por ejemplo:
+> - [Informe final del proyecto (PDF)](https://drive.google.com/...)
+> - [APK descargable](https://drive.google.com/...)
+> - [Repositorio del proyecto](https://github.com/tuusuario/project_application)
