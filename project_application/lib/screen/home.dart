@@ -64,7 +64,7 @@ class MyHomePage extends StatelessWidget {
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
-              title: const Text('Profile'),
+              title: const Text('Perfil'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/profile');

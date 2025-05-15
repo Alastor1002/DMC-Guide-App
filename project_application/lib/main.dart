@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_application/screen/splash.dart';
 import 'package:project_application/screen/home.dart';
 import 'package:project_application/screen/profile.dart';
 import 'package:project_application/screen/dmc1.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'DMC Guide',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: const Color(0xFF8B0000), 
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Devil May Cry Guide'),
+      home: const SplashScreen(),
       routes: {
         '/dmc1': (context) => const Dmc1Screen(),
         '/dmc1/misiones': (context) => const MisionesScreen(),
