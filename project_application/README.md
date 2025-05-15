@@ -36,6 +36,6 @@ Este proyecto busca ofrecer una experiencia interactiva para los fanáticos de D
 Actualmente no se han generado URLs públicas para APKs o informes.
 
 > Si decides subir tu APK, informe de proyecto o presentación a Google Drive, GitHub Pages, o Firebase Hosting, puedes colocarlo aquí. Por ejemplo:
-> - [Informe final del proyecto (PDF)](https://drive.google.com/...)
-> - [APK descargable](https://drive.google.com/...)
+> - [Video Presentación Aplicación](https://drive.google.com/file/d/1QQ9oBvH1RXRFuKtCGxuIAPxwPRkUNlGJ/view?usp=sharing)
+> - [Diagrama de Clases](https://drive.google.com/file/d/1vqwDq_Eq86uexqwZcfPpjJtO_a3Df-iu/view?usp=sharing)
 > - [Repositorio del proyecto](https://github.com/Alastor1002/DMC-Guide-App/tree/main/project_application)
