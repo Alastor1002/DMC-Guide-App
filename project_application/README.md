@@ -38,4 +38,4 @@ Actualmente no se han generado URLs públicas para APKs o informes.
 > Si decides subir tu APK, informe de proyecto o presentación a Google Drive, GitHub Pages, o Firebase Hosting, puedes colocarlo aquí. Por ejemplo:
 > - [Informe final del proyecto (PDF)](https://drive.google.com/...)
 > - [APK descargable](https://drive.google.com/...)
-> - [Repositorio del proyecto](https://github.com/tuusuario/project_application)
+> - [Repositorio del proyecto]([https://github.com/tuusuario/project_application](https://github.com/Alastor1002/DMC-Guide-App/tree/main))
