@@ -1,0 +1,36 @@
+SECCIÓN: USABILIDAD
+Pregunta 1: ¿Qué tan fácil fue navegar a través de la aplicación?
+Respuesta: 5 estrellas
+
+Pregunta 2: ¿Pudiste completar tus tareas en la aplicación sin problemas?
+Respuesta: 5 estrellas
+
+Pregunta 3: ¿Cómo calificas la interfaz gráfica en términos de diseño y claridad?
+Respuesta: 5 estrellas
+
+--------------------------------------
+
+SECCIÓN: CONTENIDO
+Pregunta 1: ¿El contenido de la aplicación fue útil para ti?
+Respuesta: 5 estrellas
+
+Pregunta 2: ¿Qué tan bien el contenido de la aplicación se adapta a tus expectativas?
+Respuesta: 5 estrellas
+
+Pregunta 3: ¿El contenido de la aplicación está presentado de manera clara y comprensible?
+Respuesta: 5 estrellas
+
+--------------------------------------
+
+SECCIÓN: COMPARTIR
+Pregunta 1: ¿Qué tan probable es que recomiendes esta aplicación a un amigo?
+Respuesta: 5 estrellas
+
+Pregunta 2: ¿Cómo te sentirías al compartir esta aplicación con alguien más?
+Respuesta: 5 estrellas
+
+Pregunta 3: ¿Crees que esta aplicación podría ser útil para personas cercanas a ti?
+Respuesta: 5 estrellas
+
+--------------------------------------
+
