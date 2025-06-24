@@ -77,7 +77,7 @@ Una aplicación informativa y funcional para fanáticos de **Devil May Cry**, de
 
 ### Inicio y navegación
 ![Inicio Sesion](/screenshoots/login.png)
-![Menú Principal](/screenshoots/home.png)
+![Menú Principal](/project_application/screenshoots/home.png)
 
 ### Misiones y Logros
 ![Misiones](/screenshoots/misiones.png)
