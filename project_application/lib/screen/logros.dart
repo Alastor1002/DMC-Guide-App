@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:project_application/entity/achievement.dart';
+import 'package:project_application/services/database_helper.dart';
+import 'package:project_application/provider/usuario_provider.dart';
 
 class LogrosScreen extends StatefulWidget {
   const LogrosScreen({super.key});
@@ -14,7 +17,30 @@ class _LogrosScreenState extends State<LogrosScreen> {
   @override
   void initState() {
     super.initState();
-    _logrosCompletados = List.generate(logros.length, (index) => false);
+    _loadProgreso();
+  }
+
+  Future<void> _loadProgreso() async {
+    final usuarioId = Provider.of<UsuarioProvider>(context, listen: false).id;
+    final db = DatabaseHelper();
+    final progreso = await db.getLogrosCompletados(usuarioId!);
+
+    setState(() {
+      _logrosCompletados = List.generate(
+        logros.length,
+        (index) => progreso.contains(index),
+      );
+    });
+  }
+
+  Future<void> _toggleLogro(int index, bool completado) async {
+    final usuarioId = Provider.of<UsuarioProvider>(context, listen: false).id;
+    final db = DatabaseHelper();
+    await db.setProgresoLogro(usuarioId!, index, completado);
+
+    setState(() {
+      _logrosCompletados[index] = completado;
+    });
   }
 
   @override
@@ -48,11 +74,11 @@ class _LogrosScreenState extends State<LogrosScreen> {
               title: Text(logro['titulo']!),
               subtitle: Text(logro['descripcion']!),
               trailing: Checkbox(
-                value: _logrosCompletados[index],
+                value: _logrosCompletados.length > index && _logrosCompletados[index],
                 onChanged: (value) {
-                  setState(() {
-                    _logrosCompletados[index] = value!;
-                  });
+                  if (value != null) {
+                    _toggleLogro(index, value);
+                  }
                 },
               ),
             ),

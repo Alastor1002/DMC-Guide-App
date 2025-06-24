@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:project_application/entity/soundmager.dart';
+import 'package:project_application/screen/logros.dart';
+import 'package:project_application/screen/misiones.dart';
+import 'package:project_application/screen/orbes.dart';
+import 'package:provider/provider.dart';
+import 'package:project_application/provider/usuario_provider.dart';
 
 class Dmc1Screen extends StatelessWidget {
   const Dmc1Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final int? usuarioId = Provider.of<UsuarioProvider>(context, listen: false).id;
+
     final List<Map<String, dynamic>> secciones = [
       {
         'titulo': 'Guía de Misiones, Rango S',
@@ -54,12 +62,32 @@ class Dmc1Screen extends StatelessWidget {
               ),
               title: Text(
                 item['titulo'],
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                Navigator.pushNamed(context, item['route']);
+                SoundManager().playButton();
+                if (item['route'] == '/dmc1/misiones') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MisionesScreen(),
+                    ),
+                  );
+                } else if (item['route'] == '/dmc1/logros') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => LogrosScreen(),
+                    ),
+                  );
+                } else if (item['route'] == '/dmc1/orbes') {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const BlueOrbScreen(),
+                    ),
+                  );
+                }
               },
             ),
           );

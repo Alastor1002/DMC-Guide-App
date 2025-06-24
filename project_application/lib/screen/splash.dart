@@ -1,6 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_application/screen/home.dart';
+import 'package:project_application/screen/login_page.dart';
+import 'package:project_application/provider/usuario_provider.dart';
+import 'package:project_application/services/database_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,23 +15,42 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Timer? _timer;
-
   @override
   void initState() {
     super.initState();
-    _timer = Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Devil May Cry')),
-      );
-    });
+    _checkSession();
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
+  Future<void> _checkSession() async {
+    final prefs = await SharedPreferences.getInstance();
+    final nombre = prefs.getString('nombreUsuario');
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    if (!mounted) return;
+
+    if (nombre != null) {
+      // Recuperar datos completos del usuario desde la BD
+      final db = DatabaseHelper();
+      final user = await db.loginUser(nombre, ''); // password vacío
+
+      if (user != null && context.mounted) {
+        Provider.of<UsuarioProvider>(context, listen: false).setUsuario(
+          id: user.id!,
+          nombre: user.nombreUsuario,
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const MyHomePage(title: 'Bienvenido')),
+        );
+        return;
+      }
+    }
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (_) => const LoginPage()),
+    );
   }
 
   @override
@@ -49,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo_title.png', 
+              'assets/images/logo_title.png',
               width: 300,
               height: 200,
             ),

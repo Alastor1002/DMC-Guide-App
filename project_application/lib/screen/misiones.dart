@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:project_application/entity/mission.dart';
+import 'package:project_application/services/database_helper.dart';
+import 'package:project_application/provider/usuario_provider.dart';
 
 class MisionesScreen extends StatefulWidget {
   const MisionesScreen({super.key});
@@ -14,7 +17,30 @@ class _MisionesScreenState extends State<MisionesScreen> {
   @override
   void initState() {
     super.initState();
-    _misionesCompletadas = List.generate(missions.length, (index) => false);
+    _loadProgreso();
+  }
+
+  Future<void> _loadProgreso() async {
+    final usuarioId = Provider.of<UsuarioProvider>(context, listen: false).id;
+    final db = DatabaseHelper();
+    final progreso = await db.getMisionesCompletadas(usuarioId!);
+
+    setState(() {
+      _misionesCompletadas = List.generate(
+        missions.length,
+        (index) => progreso.contains(index),
+      );
+    });
+  }
+
+  Future<void> _toggleMision(int index, bool completado) async {
+    final usuarioId = Provider.of<UsuarioProvider>(context, listen: false).id;
+    final db = DatabaseHelper();
+    await db.setProgresoMision(usuarioId!, index, completado);
+
+    setState(() {
+      _misionesCompletadas[index] = completado;
+    });
   }
 
   @override
@@ -39,11 +65,11 @@ class _MisionesScreenState extends State<MisionesScreen> {
               title: Text(mission.name),
               subtitle: Text('Tiempo: ${mission.time} - Orbes: ${mission.orbs}'),
               trailing: Checkbox(
-                value: _misionesCompletadas[index],
+                value: _misionesCompletadas.length > index && _misionesCompletadas[index],
                 onChanged: (value) {
-                  setState(() {
-                    _misionesCompletadas[index] = value!;
-                  });
+                  if (value != null) {
+                    _toggleMision(index, value);
+                  }
                 },
               ),
             ),

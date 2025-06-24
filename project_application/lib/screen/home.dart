@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:project_application/entity/soundmager.dart';
+import 'package:provider/provider.dart';
+import 'package:project_application/provider/usuario_provider.dart';
+import 'package:project_application/screen/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
   final String title;
+  const MyHomePage({super.key, required this.title});
 
   final List<Map<String, dynamic>> games = const [
     {
@@ -41,6 +46,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final usuarioProvider = Provider.of<UsuarioProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -56,18 +63,73 @@ class MyHomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Color(0xFF8B0000)),
+              decoration: BoxDecoration(),
               child: Text('Devil May Cry App', style: TextStyle(fontSize: 20)),
             ),
             ListTile(
-              title: const Text('Home'),
-              onTap: () => Navigator.pop(context),
-            ),
-            ListTile(
+              leading: const Icon(Icons.person),
               title: const Text('Perfil'),
               onTap: () {
+                SoundManager().playButton();
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/profile');
+                Navigator.pushNamed(
+                  context,
+                  '/profile',
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Preferencias'),
+              onTap: () {
+                SoundManager().playButton();
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/preferencias');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: const Text('Acerca de la App'),
+              onTap: () {
+                SoundManager().playButton();
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/about');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Cerrar sesión'),
+              onTap: () async {
+                SoundManager().playButton();
+                final confirm = await showDialog<bool>(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Confirmar'),
+                    content: const Text('¿Estás seguro que deseas cerrar sesión?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: const Text('Cancelar'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: const Text('Cerrar sesión'),
+                      ),
+                    ],
+                  ),
+                );
+
+                if (confirm == true) {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.clear();
+                  usuarioProvider.clear();
+
+                  if (!context.mounted) return;
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginPage()),
+                  );
+                }
               },
             ),
           ],
@@ -83,8 +145,13 @@ class MyHomePage extends StatelessWidget {
           children: games.map((game) {
             return GestureDetector(
               onTap: () {
+                SoundManager().playButton();
                 if (game['available'] == true) {
-                  Navigator.pushNamed(context, game['route']);
+                  Navigator.pushNamed(
+                    context,
+                    game['route'],
+                    arguments: {'usuarioId': usuarioProvider.id},
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Próximamente disponible')),
