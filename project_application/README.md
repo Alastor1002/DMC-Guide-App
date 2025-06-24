@@ -14,7 +14,7 @@ Una aplicación informativa y funcional para fanáticos de **Devil May Cry**, de
 
 ## ✅ Requerimientos principales / Funcionalidades
 
-- ✅ Splash Screen animada
+- ✅ Splash Screen
 - ✅ Navegación por juegos (actualmente: *Devil May Cry 1*)
 - ✅ Sistema de logros marcables
 - ✅ Lista de misiones con orbes recolectables
