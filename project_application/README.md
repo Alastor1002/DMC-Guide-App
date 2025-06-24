@@ -76,17 +76,17 @@ Una aplicación informativa y funcional para fanáticos de **Devil May Cry**, de
 ## 📸 Capturas de Pantalla
 
 ### Inicio y navegación
-![Inicio Sesion](screenshots/login.png)
-![Menú Principal](screenshots/home.png)
+![Inicio Sesion](project_application/screenshoots/login.png)
+![Menú Principal](project_application/screenshoots/home.png)
 
 ### Misiones y Logros
-![Misiones](screenshots/misiones.png)
-![Logros](screenshots/logros.png)
-![Orbes Azules](screenshots/orbes.png)
+![Misiones](project_application/screenshoots/misiones.png)
+![Logros](project_application/screenshoots/logros.png)
+![Orbes Azules](project_application/screenshoots/orbes.png)
 
 ### Preferencias y Encuesta
-![Preferencias](screenshots/preferencias.png)
-![Perfil](screenshots/perfil.png)
+![Preferencias](project_application/screenshoots/preferencias.png)
+![Perfil](project_application/screenshoots/perfil.png)
 
 ---
 
